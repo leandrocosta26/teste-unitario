@@ -32,7 +32,9 @@ public class AvaliadorTest {
         this.leilao.propoe(new Lance(gabriel, 400));
 
         Avaliador avaliador = new Avaliador(this.leilao);
+
         avaliador.avalia();
+
         Assert.assertEquals(400, avaliador.getMaiorLance(), DELTA);
         Assert.assertEquals(200,avaliador.getMenorLance(), DELTA);
         Assert.assertEquals(300,avaliador.getMediaDosLances(), DELTA);
@@ -77,7 +79,7 @@ public class AvaliadorTest {
         Assert.assertEquals(3,avaliador.getTresMaioresLances().size());
     }
 
-    @Test
+    @Test(expected = RuntimeException.class)
     public void avaliaSemLances(){
         Avaliador avaliador = new Avaliador(this.leilao);
         avaliador.avalia();

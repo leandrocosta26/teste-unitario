@@ -5,7 +5,6 @@ import br.com.caelum.leilao.dominio.Leilao;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class Avaliador {
@@ -22,6 +21,9 @@ public class Avaliador {
     }
 
     public void avalia() {
+        if (this.leilao.getLances() == null || this.leilao.getLances().isEmpty()) {
+            throw new RuntimeException();
+        }
         for (Lance lance : this.leilao.getLances()) {
             if (lance.getValor() > maiorLance) {
                 this.maiorLance = lance.getValor();
